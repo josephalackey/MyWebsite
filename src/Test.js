@@ -11,32 +11,25 @@ var bodyStyle = {
   minHeight: "75vh"
 }
 
-class App extends React.Component {
+class Test extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      page: "index"
-    };
-
-    this.onClick = this.onClick.bind(this);
   }
 
   onClick(button) {
-    this.setState({
-      page: button
-    });
-    console.log({button});
+    window.location.href=`./${button}.js`;
+    console.log("clicked");
   }
   render() {
-    return (<div className="websiteBody" page={this.state.page}>
+    return <div className="websiteBody" >
       <p style={bodyStyle}>
         <div className="menuBar">
           <MenuButtons onClick={this.onClick}/>
         </ div>
         <h1 className="portraitHeader"> Joseph Lackey <br /> Project Manager - Web Developer </ h1>
       </p>
-    </div>)
+    </div>
   }
 }
 
-export default App;
+export default Test;
