@@ -49,9 +49,11 @@
   padding-left: 10vh;
   padding-top: 30vh;
   font-family: B612;
+  
 }
 .headerContainer {
-  padding: 0
+  padding: 0;
+  font-size: 200%;
 }
 .pageQuadrant {
   
