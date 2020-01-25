@@ -1,7 +1,7 @@
 import React from 'react';
 import selfPortrait from "./images/portrait.jpg";
 import './App.css';
-import {MenuButtons} from './MenuBar.js';
+import {MenuButtons, NameHeader} from './MenuBar.js';
 
 var bodyStyle = {
   backgroundImage: `url(${selfPortrait})`,
@@ -20,19 +20,32 @@ var headerStyle = {
   fontSize: "200%"
   }
 
+// const nameText = ['J','o','s','e','p','h',' ','L','a','c','k','e','y'];
+// let newText = [];
+
+// const TypeHeader = (character) => {
+//   setTimeout(newText.push(character), 1000);
+//   //let stringText = nameText.toString();
+//   let stringText = 'Joseph Lackey'
+//   return stringText;
+  
+// }
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: "index"
+      page: "index",
+      text: ""
     };
 
     this.onClick = this.onClick.bind(this);
     this.onMouseEnter = this.onMouseEnter.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
+    //this.headerChange = this.headerChange.bind(this);
   }
 
+  //Meant to set state for page to show
   onClick(button) {
     this.setState({
       page: button
@@ -40,9 +53,15 @@ class App extends React.Component {
     console.log({button});
   }
   
+  // headerChange(newHeader) {
+  //   this.setState({
+  //     text: newHeader
+  //   })
+  // }
+
   //These two functions control mouse hover on Menu Bar
   onMouseEnter(buttonStyle) {
-    buttonStyle.color = 'orange';
+    buttonStyle.color = 'cyan';
     this.setState({
         style: buttonStyle
     });
@@ -63,7 +82,7 @@ class App extends React.Component {
           <MenuButtons onClick={this.onClick} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} />
         </ div>
         <div className="headerContainer" >
-          <h1 className="portraitHeader" style={headerStyle}> Joseph Lackey <br /> Project Manager - Web Developer </ h1>
+        <NameHeader text={this.state.text} />
         </div>
       </div>
     </div>)
