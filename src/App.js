@@ -2,8 +2,9 @@ import React from 'react';
 import selfPortrait from "./images/portrait.jpg";
 import './App.css';
 import {MenuButtons, NameHeader} from './MenuBar.js';
+import resumeLink from "./Documents/Joseph Lackey Resume 1.0E CW.pdf";
 
-var bodyStyle = {
+const bodyStyle = {
   backgroundImage: `url(${selfPortrait})`,
   backgroundSize: "200vh",
   backgroundPosition: 'center',
@@ -13,12 +14,8 @@ var bodyStyle = {
   margin: "0"
 }
 
-var headerStyle = {
-  padding: "0",
-  marginLeft: "5vh",
-  marginTop: "20%",
-  fontSize: "200%"
-  }
+
+
 
 // const nameText = ['J','o','s','e','p','h',' ','L','a','c','k','e','y'];
 // let newText = [];
@@ -53,11 +50,9 @@ class App extends React.Component {
     console.log({button});
   }
   
-  // headerChange(newHeader) {
-  //   this.setState({
-  //     text: newHeader
-  //   })
-  // }
+  resumeClick() {
+    window.location.href=resumeLink;
+  }
 
   //These two functions control mouse hover on Menu Bar
   onMouseEnter(buttonStyle) {
@@ -83,6 +78,9 @@ class App extends React.Component {
         </ div>
         <div className="headerContainer" >
         <NameHeader text={this.state.text} />
+        </div>
+        <div>
+          <button className="resumeButton" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} onClick={this.resumeClick}>Resume</ button>
         </div>
       </div>
     </div>)

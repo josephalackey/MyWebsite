@@ -1,13 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import './App.css';
 
-var menuStyle = {
+const menuStyle = {
     margin: 'auto',
     width: '50%',
     textAlign: 'center',
     backgroundColor: 'transparent'
 }
-var buttonStyle = {
+const buttonStyle = {
     backgroundColor: 'transparent',
     outline: 'none',
     border: 'none',
@@ -16,8 +16,14 @@ var buttonStyle = {
     paddingTop: '3vh',
     transition: 'color 0.1s'
 }
+const headerStyle = {
+    padding: "0",
+    marginLeft: "5vh",
+    marginTop: "20%",
+    fontSize: "200%"
+    }
 
-const nameText = ['J','o','s','e','p','h',' ','L','a','c','k','e','y'];
+const nameText = ['J','o','s','e','p','h',' ','L','a','c','k','e','y',<br key="carriage1"/>,'P','r','o','j','e','c','t',' ','M','a','n','a','g','e','r'];
 let newText = [];
 let testHeader = '';
 let testNumber = 3000;
@@ -29,50 +35,33 @@ export class NameHeader extends React.Component {
             text: ''
         }
         this.TypeHeader = this.TypeHeader.bind(this);
-        this.testState = this.testState.bind(this);
     }
 
     TypeHeader = (character) => {
+        //Adds new character to state
         newText.push(character);
-        this.testState();
-        testNumber += 1000;
-        // setTimeout(newText.push(character), 3000);
-        //testHeader = newText.join('').toString();
-        //let stringText = newText.toString();
-        //this.setState({ text: newText.join('')});
-        //this.setState({ text: newText.join('')});
-        console.log(newText);
-        //setTimeout((testHeader = tempText), 3000);
-        // return (
-        //     <h1>{testHeader}</h1>
-        // )
-        //return newText.push(<h1>{currentValue}</h1>);
-      }
-    // handleChange() {
-    //     const text = e.target.value;
-    //     this.props.onChange(text);
-    // }
-    testState() {
         this.setState({ text: newText});
-        testNumber++;
-        
     }
+
     setDelay(i) {
-        setTimeout(() => this.TypeHeader(nameText[i]), i * 100);
+        //Delay the Header character rendering
+        setTimeout(() => this.TypeHeader(nameText[i]), i * 80);
     }
+
     render() {
         
-        return <h1 id="name-header" >{this.state.text}</h1>
+        return <h1 className="portraitHeader" name="Primary" key="name-header" >{this.state.text}</h1>
 
     }
     
     componentDidMount() {
+        //Loop for Header delay
         for (let i = 0; i < nameText.length; i++) {
             this.setDelay(i);
             console.log(`loop interval ${i}`);
 
         }
-        //nameText.forEach(this.TypeHeader, 3000);
+        
     }
 }
 

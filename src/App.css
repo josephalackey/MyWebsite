@@ -46,18 +46,39 @@
 .portraitHeader {
   text-align: left;
   color: white;
-  padding-left: 10vh;
-  padding-top: 30vh;
   font-family: B612;
   
 }
 .headerContainer {
-  padding: 0;
   font-size: 200%;
+  padding-left: 10vh;
+  padding-top: 30vh;
+  height: 20vmin
 }
 .pageQuadrant {
   
   max-height: 100vh;
+  
+  
+}
+.resumeButton {
+  background-color: transparent;
+    outline: none;
+    border-color: white;
+    color: white;
+    font-size: 200%;
+    padding: 1vh;
+    margin-left: 25vh;
+    margin-top: 10vh;
+    transition: color 0.1s, border-color 0.1s;
+    position: relative;
+
+    
+}
+
+.resumeButton:hover {
+  color: cyan;
+  border-color: cyan;
   
   
 }
