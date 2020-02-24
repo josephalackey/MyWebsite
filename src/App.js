@@ -1,32 +1,39 @@
 import React from 'react';
 import selfPortrait from "./images/portrait.jpg";
+import communication from './images/communication.jpeg';
+import projectmanagement from './images/projectmanagement.png';
+import programming from './images/programming.jpg';
+import customerservice from './images/customerservice.jpg';
+import sales from './images/sales.jpg'
+import UX from './images/UX.jpg'
+import networking from './images/networking.jpg';
+import problemsolving from './images/problemsolving.png';
 import './App.css';
 import {MenuButtons, NameHeader} from './MenuBar.js';
+import {Skills} from './Skills.js';
 import resumeLink from "./Documents/Joseph Lackey Resume 1.0E CW.pdf";
 
 const bodyStyle = {
   backgroundImage: `url(${selfPortrait})`,
-  backgroundSize: "200vh",
-  backgroundPosition: 'center',
+  backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
   minHeight: "100vh",
+  
   padding: "0",
   margin: "0"
 }
 
+const skillList = [
+  {label: 'Project Management', image: projectmanagement}, 
+  {label: 'Programming', image: programming},
+  {label: 'Customer Service', image: customerservice},
+  {label: 'Communication', image: communication}, 
+  {label: 'Sales', image: sales}, 
+  {label: 'User Experience', image: UX}, 
+  {label: 'Networking', image: networking},
+  {label: 'Problem Solving', image: problemsolving}
+]
 
-
-
-// const nameText = ['J','o','s','e','p','h',' ','L','a','c','k','e','y'];
-// let newText = [];
-
-// const TypeHeader = (character) => {
-//   setTimeout(newText.push(character), 1000);
-//   //let stringText = nameText.toString();
-//   let stringText = 'Joseph Lackey'
-//   return stringText;
-  
-// }
 
 class App extends React.Component {
   constructor(props) {
@@ -48,6 +55,7 @@ class App extends React.Component {
       page: button
     });
     console.log({button});
+    window.location.href='./Skills.js';
   }
   
   resumeClick() {
@@ -71,19 +79,31 @@ class App extends React.Component {
   }
 
   render() {
-    return (<div className="websiteBody" page={this.state.page}>
-      <div style={bodyStyle}>
-        <div className="menuBar">
-          <MenuButtons onClick={this.onClick} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} />
-        </ div>
-        <div className="headerContainer" >
-        <NameHeader text={this.state.text} />
-        </div>
-        <div>
-          <button className="resumeButton" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} onClick={this.resumeClick}>Resume</ button>
-        </div>
-      </div>
-    </div>)
+    return (<div>
+              <div className="menuBar">
+                  <MenuButtons onClick={this.onClick} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} />
+              </ div>
+              <div style={bodyStyle}>
+                <div className="headerContainer" >
+                  <NameHeader text={this.state.text} />
+                </div>
+                <div>
+                  <button className="resumeButton" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} onClick={this.resumeClick}>Resume</ button>
+                </div>
+              </div>
+              <div className="skills">
+                <h1 className="skillsHeader">Professional Skills</h1>
+                <div className='skillContainer'>
+                  {skillList.map(skill => (
+                    <Skills className='skillItem'
+                      title={skill.label}
+                      image={skill.image}
+                    />
+                  
+                  ))}
+                </div>
+              </div>
+            </div>)
   }
 }
 
