@@ -3,8 +3,6 @@ import './App.css';
 import Dialog from 'react-dialog';
 
 
-
-
 export class Skills extends React.Component {
     constructor(props) {
         super(props);
@@ -27,26 +25,34 @@ export class Skills extends React.Component {
 
     render() {
 
-        return (<div className="skillItem">
+        return (<div>
+            <div className="skillItem" >
                     <h1 className="skillLabel">{this.props.title}</h1>
                     <img className="skillImage" src={this.props.image} alt={this.props.title} onClick={this.openDialog} />
-                     <div className='skillTextBox'>
-                        {
-                            this.state.isDialogOpen && 
-                            <Dialog className='skillTextBox' title="Dialog Title" modal={true} onClose={this.closeDialog}
-                                buttons={
-                                [{
-                                    text: "Close",
-                                    onClick: () => this.closeDialog()
-                                }]
-                            }>
-                                <h1 className='skillDescription'>Dialog Content</h1>
-                                <p className='skillDescription'>More Content. Anything goes here</p>
-                            </Dialog>
+                    
+                </div>
+                <div className='skillDialogContainer'>
+                {
+                    this.state.isDialogOpen && 
+                    <Dialog width="50vw" title="" modal={true} onClose={this.closeDialog}
+                        buttons={
+                        [{
+                            text: "Close",
+                            className: "dialogButton",
+                            onClick: () => this.closeDialog()
                             
-                        }
-                        
-                    </div>
-                </div>);
+                        }]
+                    }>
+                        <h1 className='skillDialogTitle'>{this.props.title}</h1>
+                        <p className='skillDescription'>More Content. Anything goes here
+                        this is a lot of content. A matter of fact, this is so much content
+                        that you will love having all the content that I have. You love contentas 
+                        as much as I love giving content, wouldn't you say?</p>
+                    </Dialog>
+                    
+                }
+                
+            </div>
+            </div>);
     }
 }

@@ -98,6 +98,7 @@ class App extends React.Component {
                     <Skills className='skillItem'
                       title={skill.label}
                       image={skill.image}
+                      key={skill.label}
                     />
                   
                   ))}
