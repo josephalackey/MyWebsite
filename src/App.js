@@ -8,6 +8,7 @@ import sales from './images/sales.jpg'
 import UX from './images/UX.jpg'
 import networking from './images/networking.jpg';
 import problemsolving from './images/problemsolving.png';
+import nappers from './images/nappers.jpg';
 import './App.css';
 import {MenuButtons, NameHeader} from './MenuBar.js';
 import {Skills} from './Skills.js';
@@ -64,7 +65,7 @@ class App extends React.Component {
 
   //These two functions control mouse hover on Menu Bar
   onMouseEnter(buttonStyle) {
-    buttonStyle.color = 'cyan';
+    buttonStyle.color = 'rgb(228, 159, 56)';
     this.setState({
         style: buttonStyle
     });
@@ -88,8 +89,26 @@ class App extends React.Component {
                   <NameHeader text={this.state.text} />
                 </div>
                 <div>
-                  <button className="resumeButton" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} onClick={this.resumeClick}>Resume</ button>
+                  <button className="resumeButton" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} onClick={this.resumeClick}>RESUME</ button>
                 </div>
+              </div>
+              <div className="aboutMe">
+                <img className="aboutMeImage" src={nappers} />
+                <div className="aboutMeText">
+                  <h1 className="aboutMeHeader" >About me</h1>
+                  <p className="aboutMeBody">Hello, my name is Joseph. I like to do stuff that is fun and fun stuff is really 
+                   fun and I am putting a lot of fillwer stuff so that I will be able to keep
+                   typing and make this look like a lot of words. These words are the best. In, 
+                   fact, I love typing words so much that we will be read. Are you still reading?
+                   Hello, my name is Joseph. I like to do stuff that is fun and fun stuff is really 
+                   fun and I am putting a lot of fillwer stuff so that I will be able to keep
+                   typing and make this look like a lot of words. These words are the best. In, 
+                   fact, I love typing words so much that we will be read. Are you still reading?
+                   Hello, my name is Joseph. I like to do stuff that is fun and fun stuff is really 
+                   fun and I am putting a lot of fillwer stuff so that I will be able to keep
+                   typing and make this look like a lot of words. These words are the best. In, 
+                   fact, I love typing words so much that we will be read. Are you still reading?</p> 
+                  </div>
               </div>
               <div className="skills">
                 <h1 className="skillsHeader">Professional Skills</h1>

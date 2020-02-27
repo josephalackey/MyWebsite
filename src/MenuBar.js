@@ -15,6 +15,8 @@ const buttonStyle = {
     color: 'white',
     fontSize: '120%',
     paddingTop: '3vh',
+    paddingLeft: '15px',
+    paddingRight: '15px',
     transition: 'color 0.1s'
 }
 const headerStyle = {
@@ -77,10 +79,10 @@ export class MenuButtons extends React.Component {
     render() {
         return (
             <div style={menuStyle}>
-                <button className="menuButtons" style={buttonStyle} name="index" onClick={e => this.props.onClick(e.target.name)} onMouseEnter={e => {this.props.onMouseEnter(e.target.style)}} onMouseLeave={e => {this.props.onMouseLeave(e.target.style)}} >Home</button>
-                <button className="menuButtons" style={buttonStyle} name="Skills" onClick={e => this.props.onClick(e.target.name)} onMouseEnter={e => {this.props.onMouseEnter(e.target.style)}} onMouseLeave={e => {this.props.onMouseLeave(e.target.style)}}>Skills</button>
-                <button className="menuButtons" style={buttonStyle} name="Blog" onClick={e => this.props.onClick(e.target.name)} onMouseEnter={e => {this.props.onMouseEnter(e.target.style)}} onMouseLeave={e => {this.props.onMouseLeave(e.target.style)}}>Blog</button>
-                <button className="menuButtons" style={buttonStyle} name="About me" onClick={e => this.props.onClick(e.target.name)} onMouseEnter={e => {this.props.onMouseEnter(e.target.style)}} onMouseLeave={e => {this.props.onMouseLeave(e.target.style)}}>About me</button>
+                <button className="menuButtons" style={buttonStyle} name="index" onClick={e => this.props.onClick(e.target.name)} onMouseEnter={e => {this.props.onMouseEnter(e.target.style)}} onMouseLeave={e => {this.props.onMouseLeave(e.target.style)}} >HOME</button>
+                <button className="menuButtons" style={buttonStyle} name="Skills" onClick={e => this.props.onClick(e.target.name)} onMouseEnter={e => {this.props.onMouseEnter(e.target.style)}} onMouseLeave={e => {this.props.onMouseLeave(e.target.style)}}>SKILLS</button>
+                <button className="menuButtons" style={buttonStyle} name="Blog" onClick={e => this.props.onClick(e.target.name)} onMouseEnter={e => {this.props.onMouseEnter(e.target.style)}} onMouseLeave={e => {this.props.onMouseLeave(e.target.style)}}>BLOG</button>
+                <button className="menuButtons" style={buttonStyle} name="About me" onClick={e => this.props.onClick(e.target.name)} onMouseEnter={e => {this.props.onMouseEnter(e.target.style)}} onMouseLeave={e => {this.props.onMouseLeave(e.target.style)}}>ABOUT</button>
             </div>
         )
     }
