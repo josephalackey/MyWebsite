@@ -29,30 +29,35 @@
 }
 
 .aboutMe {
-  height: 100vh;
+  min-height: 100vh;
   padding: 0;
   margin: 0;
   
+  
 
 }
+.aboutMeContainer {
+  padding-top: 25vh;
+  padding-bottom: 12vh;
+  padding-left: 20vw;
+  padding-right: 20vw;
+  display: flex;
+  
+}
+
 .aboutMeImage {
  padding: 0;
- padding-left: 20vw;
  margin: 0;
  width: 400px;
  height: 533px;
- padding-top: 25vh;
- 
 }
 
 .aboutMeHeader {
   padding: 0;
-  padding-bottom: 20px;
-  margin:0;
+  margin: 0;
   text-align: center;
-  font-size: calc(30px + 2vmin);
+  font-size: 30px;
   font-family: B612;
-  max-width: 600px;
   font-weight: bold;
   
 
@@ -61,16 +66,18 @@
 .aboutMeBody {
   padding: 0;
   margin: 0;
-  max-width: 600px;
   font-weight: 600;
+  font-size: 20px;
+  padding-top: 20px;
+  min-width: 450px;
   
   
 }
 .aboutMeText {
   padding: 0;
-  padding-right: 20vw;
-  padding-top: 25vh;
-  margin: 0;
+  
+  margin-left: 5vw;
+  margin-right: 5vw;
   float: right;
   
 }
@@ -111,7 +118,7 @@
 
 .skills {
   background-color: rgb(24, 24, 24);
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   padding-left: 10vw;
   padding-right: 10vw;
@@ -135,33 +142,37 @@
   flex-direction: column;
   flex-wrap: wrap;
   margin: 20px;
-  margin-top: 50px;
+  margin-top: 25px;
+  padding-bottom: 100px;
   margin-bottom: 50px;
   align-items: center;
-  width: 17vw;
+  width: 300px;
   position: relative
   
 }
 .skillImage {
+  margin-top: 90px;
   border-radius: 15vh;
   border: 3px solid;
   border-color: rgb(255, 255, 255);
   width: 100px;
   height: 100px;
   box-shadow: 0px 0px 20px rgb(165, 165, 165);
+  position: absolute;
   transition: width 0.3s, height 0.3s, position 0, top 0.3s
 }
 .skillImage:hover {
   width: 120px;
   height: 120px;
-  position: absolute;
-  top: 70px;
+  
 }
 .skillLabel {
   font-size: 200%;
   font-family: B612;
   font-weight: 500;
-  color: rgb(228, 159, 56)
+  color: rgb(228, 159, 56);
+  width: 300px;
+  text-align: center;
 }
 
 .skillContainer {
@@ -184,14 +195,15 @@
 .skillDialogContainer {
   position: absolute;
   padding: 0;
-  top: 125vh;
+  top: 225vh;
   left: 25vw;
   margin: 0;
   text-align: center;
   width: 50vw;
   z-index: 1;
   border-radius: 10px;
-  transform: translate(250px, 150px)
+  transform: translate(250px, 150px);
+  transition: position 0.1s;
 }
 .skillDialogTitle {
   font-size: 200%;
@@ -206,7 +218,7 @@
   border-top-right-radius: 10px;
   
 }
-.dialogButton {
+.skillDialogButton {
   background-color: darkslategray;
   color: white;
   text-align: left;
@@ -228,9 +240,6 @@
     font-weight: 600;
     transition: color 0.1s, border-color 0.1s;
     position: relative;
-    
-
-    
 }
 
 .resumeButton:hover {
@@ -238,8 +247,28 @@
   border-color: rgb(228, 159, 56);
   }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
   [class*="resume"] {
     font-size: 100%
+  }
+  [class*="aboutMeImage"] {
+    width: 225px;
+    height: 310px;
+    align-self: center;
+  }
+  [class="aboutMeContainer"] {
+    flex-direction: column;
+    justify-content: center;
+    margin: none
+  }
+  [class="aboutMeBody"] {
+    align-items: center;
+    min-width: 200px;
+    max-width: 450px
+  }
+  [class="aboutMeText"] {
+    padding-top: 40px;
+    margin-left: none;
+    margin-right: none;
   }
 }

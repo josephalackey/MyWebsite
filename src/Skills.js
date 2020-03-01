@@ -38,7 +38,7 @@ export class Skills extends React.Component {
                         buttons={
                         [{
                             text: "Close",
-                            className: "dialogButton",
+                            className: "skillDialogButton",
                             onClick: () => this.closeDialog()
                             
                         }]

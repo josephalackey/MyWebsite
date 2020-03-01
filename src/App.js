@@ -55,8 +55,6 @@ class App extends React.Component {
     this.setState({
       page: button
     });
-    console.log({button});
-    window.location.href='./Skills.js';
   }
   
   resumeClick() {
@@ -69,14 +67,12 @@ class App extends React.Component {
     this.setState({
         style: buttonStyle
     });
-    console.log('orange');
   }
   onMouseLeave(buttonStyle) {
     buttonStyle.color = 'white';
     this.setState({
         style: buttonStyle
     });
-    console.log('white');
   }
 
   render() {
@@ -93,21 +89,23 @@ class App extends React.Component {
                 </div>
               </div>
               <div className="aboutMe">
-                <img className="aboutMeImage" src={nappers} />
-                <div className="aboutMeText">
-                  <h1 className="aboutMeHeader" >About me</h1>
-                  <p className="aboutMeBody">Hello, my name is Joseph. I like to do stuff that is fun and fun stuff is really 
-                   fun and I am putting a lot of fillwer stuff so that I will be able to keep
-                   typing and make this look like a lot of words. These words are the best. In, 
-                   fact, I love typing words so much that we will be read. Are you still reading?
-                   Hello, my name is Joseph. I like to do stuff that is fun and fun stuff is really 
-                   fun and I am putting a lot of fillwer stuff so that I will be able to keep
-                   typing and make this look like a lot of words. These words are the best. In, 
-                   fact, I love typing words so much that we will be read. Are you still reading?
-                   Hello, my name is Joseph. I like to do stuff that is fun and fun stuff is really 
-                   fun and I am putting a lot of fillwer stuff so that I will be able to keep
-                   typing and make this look like a lot of words. These words are the best. In, 
-                   fact, I love typing words so much that we will be read. Are you still reading?</p> 
+                <div className="aboutMeContainer">
+                  <img className="aboutMeImage" src={nappers} />
+                  <div className="aboutMeText">
+                    <h1 className="aboutMeHeader" >About me</h1>
+                    <p className="aboutMeBody">Hello, my name is Joseph. I like to do stuff that is fun and fun stuff is really 
+                     fun and I am putting a lot of fillwer stuff so that I will be able to keep
+                     typing and make this look like a lot of words. These words are the best. In, 
+                     fact, I love typing words so much that we will be read. Are you still reading?
+                      Hello, my name is Joseph. I like to do stuff that is fun and fun stuff is really 
+                     fun and I am putting a lot of fillwer stuff so that I will be able to keep
+                     typing and make this look like a lot of words. These words are the best. In, 
+                     fact, I love typing words so much that we will be read. Are you still reading?
+                     Hello, my name is Joseph. I like to do stuff that is fun and fun stuff is really 
+                     fun and I am putting a lot of fillwer stuff so that I will be able to keep
+                     typing and make this look like a lot of words. These words are the best. In, 
+                     fact, I love typing words so much that we will be read. Are you still reading?</p> 
+                    </div>
                   </div>
               </div>
               <div className="skills">
