@@ -1,13 +1,13 @@
 import React from 'react';
 import selfPortrait from "./images/portrait.jpg";
-import communication from './images/communication.jpeg';
-import projectmanagement from './images/projectmanagement.png';
-import programming from './images/programming.jpg';
-import customerservice from './images/customerservice.jpg';
-import sales from './images/sales.jpg'
-import UX from './images/UX.jpg'
-import networking from './images/networking.jpg';
-import problemsolving from './images/problemsolving.png';
+import communication from './images/chat.png';
+import projectmanagement from './images/pie-chart.png';
+import programming from './images/macbook.png';
+import customerservice from './images/girl.png';
+import sales from './images/tag.png'
+import UX from './images/user.png'
+import networking from './images/server.png';
+import problemsolving from './images/mind.png';
 import nappers from './images/nappers.jpg';
 import './App.css';
 import {MenuButtons, NameHeader} from './MenuBar.js';
@@ -23,17 +23,24 @@ const bodyStyle = {
   padding: "0",
   margin: "0"
 }
-
+const testStyle1 = {backgroundColor: "#8D99AE", textAlign: "left"};
+const testStyle2 = {backgroundColor: "#242F40", textAlign: "right"};
+const testStyle3 = {backgroundColor: "#242F40", textAlign: "left"};
+const testStyle4 = {backgroundColor: "#CCA43B", textAlign: "right"};
+const testStyle5 = {backgroundColor: "#CCA43B", textAlign: "left"};
+const testStyle6 = {backgroundColor: "#8D99AE", textAlign: "right"};
+const testStyle7 = {backgroundColor: "#8D99AE", textAlign: "left"};
+const testStyle8 = {backgroundColor: "#242F40", textAlign: "right"};
 const skillList = [
-  {label: 'Project Management', image: projectmanagement}, 
-  {label: 'Programming', image: programming},
-  {label: 'Customer Service', image: customerservice},
-  {label: 'Communication', image: communication}, 
-  {label: 'Sales', image: sales}, 
-  {label: 'User Experience', image: UX}, 
-  {label: 'Networking', image: networking},
-  {label: 'Problem Solving', image: problemsolving}
-]
+  {label: 'Project Management', image: projectmanagement, skillStyle:{backgroundColor: "#8D99AE"}}, 
+  {label: 'Programming', image: programming, skillStyle:{backgroundColor: "#242F40"}},
+  {label: 'Customer Service', image: customerservice, skillStyle:{backgroundColor: "#242F40"}},
+  {label: 'Communication', image: communication, skillStyle:{backgroundColor: "#CCA43B"}}, 
+  {label: 'Building Solutions', image: sales, skillStyle:{backgroundColor: "#CCA43B"}}, 
+  {label: 'User Experience', image: UX, skillStyle:{backgroundColor: "#8D99AE"}}, 
+  {label: 'Networking', image: networking, skillStyle:{backgroundColor: "#8D99AE", }},
+  {label: 'Problem Solving', image: problemsolving, skillStyle:{backgroundColor: "#242F40"}}
+];
 
 
 class App extends React.Component {
@@ -55,6 +62,10 @@ class App extends React.Component {
     this.setState({
       page: button
     });
+    document.getElementById(button).scrollIntoView({
+      behavior: "smooth",
+      block: "nearest"
+    });
   }
   
   resumeClick() {
@@ -63,7 +74,7 @@ class App extends React.Component {
 
   //These two functions control mouse hover on Menu Bar
   onMouseEnter(buttonStyle) {
-    buttonStyle.color = 'rgb(228, 159, 56)';
+    buttonStyle.color = 'rgb(204, 164, 59)';
     this.setState({
         style: buttonStyle
     });
@@ -76,7 +87,7 @@ class App extends React.Component {
   }
 
   render() {
-    return (<div>
+    return (<div id="Home">
               <div className="menuBar">
                   <MenuButtons onClick={this.onClick} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} />
               </ div>
@@ -88,7 +99,7 @@ class App extends React.Component {
                   <button className="resumeButton" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} onClick={this.resumeClick}>RESUME</ button>
                 </div>
               </div>
-              <div className="aboutMe">
+              <div className="aboutMe" id="aboutMe">
                 <div className="aboutMeContainer">
                   <img className="aboutMeImage" src={nappers} />
                   <div className="aboutMeText">
@@ -108,18 +119,18 @@ class App extends React.Component {
                     </div>
                   </div>
               </div>
-              <div className="skills">
-                <h1 className="skillsHeader">Professional Skills</h1>
-                <div className='skillContainer'>
+              <h1 style={{textAlign: "center", backgroundColor: "#E5E5E5", fontFamily: "B612", margin: "0", paddingTop: "50px", fontSize: "50px", color: "#242F40"}}>PROFESSIONAL SKILLS</h1>
+              <div id="Skills" className="skillInfographic">
                   {skillList.map(skill => (
-                    <Skills className='skillItem'
+                    <Skills 
                       title={skill.label}
                       image={skill.image}
                       key={skill.label}
+                      skillStyle={skill.skillStyle}
+                      currentIndex={skillList.indexOf(skill)}
                     />
-                  
                   ))}
-                </div>
+                
               </div>
             </div>)
   }

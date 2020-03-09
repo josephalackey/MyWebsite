@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -32,6 +21,7 @@
   min-height: 100vh;
   padding: 0;
   margin: 0;
+  background-color: #E5E5E5;
   
   
 
@@ -59,6 +49,7 @@
   font-size: 30px;
   font-family: B612;
   font-weight: bold;
+  color: #242F40
   
 
 }
@@ -70,6 +61,7 @@
   font-size: 20px;
   padding-top: 20px;
   min-width: 450px;
+  color: #242F40
   
   
 }
@@ -117,7 +109,7 @@
 }
 
 .skills {
-  background-color: rgb(24, 24, 24);
+  background-color: #242F40;
   min-height: 100vh;
   margin: 0;
   padding-left: 10vw;
@@ -125,12 +117,11 @@
 }
 
 .skillsHeader {
-  padding: 0;
-  padding-top: 10vh;
+  padding-top: 12vh;
   margin:0;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
-  font-size: 8vh;
+  font-size: 300%;
   font-family: B612;
   color: rgb(255, 255, 255)
   
@@ -154,32 +145,27 @@
   margin-top: 90px;
   border-radius: 15vh;
   border: 3px solid;
-  border-color: rgb(255, 255, 255);
+  border-color: rgb(255,255,255);
   width: 100px;
   height: 100px;
-  box-shadow: 0px 0px 20px rgb(165, 165, 165);
   position: absolute;
-  transition: width 0.3s, height 0.3s, position 0, top 0.3s
+  transition: width 0.1s, height 0.1s, top 0.1s
 }
 .skillImage:hover {
   width: 120px;
-  height: 120px;
+  height: 120px
   
 }
 .skillLabel {
-  font-size: 200%;
+  font-size: 150%;
   font-family: B612;
   font-weight: 500;
-  color: rgb(228, 159, 56);
+  color: #cca43b;
   width: 300px;
   text-align: center;
 }
 
-.skillContainer {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
+
 
 .skillDescription {
   font-size: 100%;
@@ -225,6 +211,14 @@
   border-radius: 5px;
   border-color: black;
 }
+.skillsSubHeader {
+  text-align: center;
+  color: white;
+  margin-bottom: 50px;
+  font-size: 110%;
+  font-weight: 500;
+  font-family: B612
+}
 .resumeButton {
   background-color: transparent;
     outline: none;
@@ -243,8 +237,49 @@
 }
 
 .resumeButton:hover {
-  color: rgb(228, 159, 56);
-  border-color: rgb(228, 159, 56);
+  color: rgb(204, 164, 59);
+  border-color: rgb(204, 164, 59);
+  }
+
+  .skillContainer {
+    width: auto;
+    background-color: #E5E5E5;
+    justify-content: justify;
+    width: 34vw;
+  }
+  .skillInfographic {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #E5E5E5;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 150px;
+    flex: 1
+  }
+  .skill {
+    display: table;
+    font-weight: 700;
+    width: 30vw;
+    padding: 2vw;
+    color: #E5E5E5;
+    font-size: 30px;
+    
+    transition: transform 0.1s
+    
+  }
+  .skill:hover {
+    transform: scale(1.1);
+    
+  }
+  .skillHeader {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .skillIcon {
+    display: table-cell;
+    margin: auto;
+    
+    
   }
 
 @media only screen and (max-width: 800px) {

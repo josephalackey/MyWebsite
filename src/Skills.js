@@ -2,6 +2,9 @@ import React from 'react';
 import './App.css';
 import Dialog from 'react-dialog';
 
+let iconAlign = {textAlign: "rightAlign"};
+let titleAlign = {textAlign: "leftAlign"};
+let skillSide;
 
 export class Skills extends React.Component {
     constructor(props) {
@@ -12,8 +15,34 @@ export class Skills extends React.Component {
         };
         this.openDialog = this.openDialog.bind(this);
         this.closeDialog = this.closeDialog.bind(this);
-    }
+        this.checkSide = this.checkSide.bind(this);
+        if ((this.props.currentIndex + 1) % 2) {
+            iconAlign = {marginRight: "0"}
+            titleAlign = {textAlign: "left"}
+            skillSide = "left";
 
+        } else {
+            
+            iconAlign = {marginLeft: "0"}
+            titleAlign = {textAlign: "right"}
+            skillSide = "right";
+        }
+
+    }
+    checkSide(side) {
+        if (side == "left") {
+            return (<div className="skill"style={this.props.skillStyle}>
+                    <div className="skillHeader" style={titleAlign} >{this.props.title}</div>
+                    <img className="skillIcon" width="80px" height="80px" src={this.props.image} alt={this.props.title}  onClick={this.openDialog} style={iconAlign} />
+                    
+                </div>)
+        } else {
+            return (<div className="skill"style={this.props.skillStyle}>
+                    <img className="skillIcon" width="80px" height="80px" src={this.props.image} alt={this.props.title}  onClick={this.openDialog} style={iconAlign} />
+                    <div className="skillHeader" style={titleAlign} >{this.props.title}</div>
+                </div>)
+        }
+    }
     openDialog() {
         this.setState({isDialogOpen: true});
         console.log('clicked');
@@ -25,12 +54,9 @@ export class Skills extends React.Component {
 
     render() {
 
-        return (<div>
-            <div className="skillItem" >
-                    <h1 className="skillLabel">{this.props.title}</h1>
-                    <img className="skillImage" src={this.props.image} alt={this.props.title} onClick={this.openDialog} />
-                    
-                </div>
+        return (<div className="skillContainer" style={this.props.skillStyle}>
+                {this.checkSide(skillSide)}
+                
                 <div className='skillDialogContainer'>
                 {
                     this.state.isDialogOpen && 
@@ -52,7 +78,7 @@ export class Skills extends React.Component {
                     
                 }
                 
-            </div>
+                </div>
             </div>);
     }
 }
