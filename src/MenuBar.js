@@ -47,7 +47,7 @@ export class NameHeader extends React.Component {
     }
 
     setDelay(i) {
-        //Delay the Header character rendering
+        //Delay the Header character rendering causing typing-like stagger
         setTimeout(() => this.TypeHeader(nameText[i]), i * 80);
     }
 
@@ -61,7 +61,6 @@ export class NameHeader extends React.Component {
         //Loop for Header delay
         for (let i = 0; i < nameText.length; i++) {
             this.setDelay(i);
-            console.log(`loop interval ${i}`);
 
         }
         

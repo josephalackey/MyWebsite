@@ -14,32 +14,89 @@ import {MenuButtons, NameHeader} from './MenuBar.js';
 import {Skills} from './Skills.js';
 import resumeLink from "./Documents/Joseph Lackey Resume 1.0E CW.pdf";
 
+const firebaseConfig = {
+  apiKey: "AIzaSyAxjmidzSR4I48SsbwYTS_Flqn0qnACD58",
+  authDomain: "personal-website-450d2.firebaseapp.com",
+  databaseURL: "https://personal-website-450d2.firebaseio.com",
+  projectId: "personal-website-450d2",
+  storageBucket: "personal-website-450d2.appspot.com",
+  messagingSenderId: "639341114300",
+  appId: "1:639341114300:web:5ecf700ce40e8cfa5971b9",
+  measurementId: "G-GFWEW07PPQ"
+};
+// Initialize Cloud Firestore through Firebase
+const firebase = require("firebase");
+// Required for side-effects
+require("firebase/firestore");
+firebase.initializeApp({
+  apiKey: 'AIzaSyAxjmidzSR4I48SsbwYTS_Flqn0qnACD58',
+  authDomain: 'personal-website-450d2.firebaseapp.com',
+  projectId: 'personal-website-450d2'
+});
+
+const db = firebase.firestore();
+
+
+
+let testSkillList = [];
+const newTestSkillList = [];
+
+const renderSkill = (doc) => {
+  let skill = document.createElement("Skills");
+  skill.title = doc.data().name;
+  skill.src = doc.data().src;
+  
+  const skillsSelector = document.getElementById('Skills');
+  skillsSelector.appendChild(skill);
+}
+
+// const getSkills = async () => {
+// let indexCounter = 0;
+// await db.collection("Skills").get().then( (querySnapshot) => {
+//   querySnapshot.docs.forEach((doc) => {
+//     testSkillList.push({
+//       name: doc.data().name,
+//       src: doc.data().src,
+//       key: doc.data().name,
+//       skillStyle: doc.data().color,
+//       currentIndex: indexCounter});
+//       console.log(testSkillList);
+    
+//     newTestSkillList.push(<Skills 
+//       title={doc.data().name}
+//       image={doc.data().src}
+//       key={doc.data().name}
+//       skillStyle={doc.data().skillStyle}
+//       currentIndex={1}
+//     />)
+//     console.log(doc.data().name)
+        
+//   });
+// });
+
+// newTestSkillList = await testSkillList.json();
+
+
+
+
+
 const bodyStyle = {
   backgroundImage: `url(${selfPortrait})`,
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
   minHeight: "100vh",
-  
   padding: "0",
   margin: "0"
 }
-const testStyle1 = {backgroundColor: "#8D99AE", textAlign: "left"};
-const testStyle2 = {backgroundColor: "#242F40", textAlign: "right"};
-const testStyle3 = {backgroundColor: "#242F40", textAlign: "left"};
-const testStyle4 = {backgroundColor: "#CCA43B", textAlign: "right"};
-const testStyle5 = {backgroundColor: "#CCA43B", textAlign: "left"};
-const testStyle6 = {backgroundColor: "#8D99AE", textAlign: "right"};
-const testStyle7 = {backgroundColor: "#8D99AE", textAlign: "left"};
-const testStyle8 = {backgroundColor: "#242F40", textAlign: "right"};
 const skillList = [
-  {label: 'Project Management', image: projectmanagement, skillStyle:{backgroundColor: "#8D99AE"}}, 
-  {label: 'Programming', image: programming, skillStyle:{backgroundColor: "#242F40"}},
-  {label: 'Customer Service', image: customerservice, skillStyle:{backgroundColor: "#242F40"}},
-  {label: 'Communication', image: communication, skillStyle:{backgroundColor: "#CCA43B"}}, 
-  {label: 'Building Solutions', image: sales, skillStyle:{backgroundColor: "#CCA43B"}}, 
-  {label: 'User Experience', image: UX, skillStyle:{backgroundColor: "#8D99AE"}}, 
-  {label: 'Networking', image: networking, skillStyle:{backgroundColor: "#8D99AE", }},
-  {label: 'Problem Solving', image: problemsolving, skillStyle:{backgroundColor: "#242F40"}}
+  {name: 'Project Management', src: projectmanagement, skillStyle:{backgroundColor: "#8D99AE"}}, 
+  {name: 'Programming', src: programming, skillStyle:{backgroundColor: "#242F40"}},
+  {name: 'Customer Service', src: customerservice, skillStyle:{backgroundColor: "#242F40"}},
+  {name: 'Communication', src: communication, skillStyle:{backgroundColor: "#CCA43B"}}, 
+  {name: 'Building Solutions', src: sales, skillStyle:{backgroundColor: "#CCA43B"}}, 
+  {name: 'User Experience', src: UX, skillStyle:{backgroundColor: "#8D99AE"}}, 
+  {name: 'Networking', src: networking, skillStyle:{backgroundColor: "#8D99AE", }},
+  {name: 'Problem Solving', src: problemsolving, skillStyle:{backgroundColor: "#242F40"}}
 ];
 
 
@@ -48,15 +105,62 @@ class App extends React.Component {
     super(props);
     this.state = {
       page: "index",
-      text: ""
+      text: "",
+      skillArray: []
     };
 
     this.onClick = this.onClick.bind(this);
     this.onMouseEnter = this.onMouseEnter.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
+    this.createSkills = this.createSkills.bind(this);
+    this.getSkills = this.getSkills.bind(this);
+    this.getSkills();
     //this.headerChange = this.headerChange.bind(this);
   }
+  getSkills() {
+    let indexCounter = 0;
+    db.collection("Skills").get().then( (querySnapshot) => {
+      querySnapshot.docs.forEach((doc) => {
+        
+        testSkillList.push({
+          name: doc.data().name,
+          src: doc.data().src,
+          skillStyle: {backgroundColor: doc.data().color},
+          currentIndex: indexCounter});
+          indexCounter++;
+          console.log(doc.data().src);
 
+        
+            
+      });
+      this.setState({skillArray: testSkillList})
+    })}
+    createSkills() {
+      let tempList = [];
+      console.log(skillList);
+      console.log(testSkillList)
+      testSkillList.map(skill => {
+        console.log(skill.name);
+    })
+      
+      console.log("state set")
+      // for (let i = 0; i < testSkillList.length; i++) {
+      // tempList.push((<Skills 
+      //   title={tempList[i].name}
+      //   image={tempList[i].src}
+      //   key={tempList[i].name}
+      //   skillStyle={tempList[i].skillStyle}
+      //   currentIndex={i}
+        
+      // />));
+      // console.log(tempList[i])
+      // };
+      console.log(testSkillList)
+      console.log(tempList)
+      console.log(newTestSkillList)
+      
+    }
+  
   //Meant to set state for page to show
   onClick(button) {
     this.setState({
@@ -85,7 +189,11 @@ class App extends React.Component {
         style: buttonStyle
     });
   }
-
+  componentDidUpdate() {
+    this.createSkills();
+    console.log("render");
+    console.log(this.state.skillArray);
+  }
   render() {
     return (<div id="Home">
               <div className="menuBar">
@@ -120,18 +228,23 @@ class App extends React.Component {
                   </div>
               </div>
               <h1 style={{textAlign: "center", backgroundColor: "#E5E5E5", fontFamily: "B612", margin: "0", paddingTop: "50px", fontSize: "50px", color: "#242F40"}}>PROFESSIONAL SKILLS</h1>
+              
               <div id="Skills" className="skillInfographic">
-                  {skillList.map(skill => (
+              
+              {this.state.skillArray.map(skill => (
                     <Skills 
-                      title={skill.label}
-                      image={skill.image}
-                      key={skill.label}
+                      title={skill.name}
+                      image={skill.src}
+                      key={skill.name}
                       skillStyle={skill.skillStyle}
-                      currentIndex={skillList.indexOf(skill)}
+                      currentIndex={skill.currentIndex}
+                      test={console.log(skill.name)}
                     />
+                    
                   ))}
-                
-              </div>
+                  
+                  
+              </div> 
             </div>)
   }
 }
