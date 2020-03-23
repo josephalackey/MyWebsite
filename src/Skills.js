@@ -2,32 +2,36 @@ import React from 'react';
 import './App.css';
 import Dialog from 'react-dialog';
 
-let iconAlign = {textAlign: "rightAlign"};
-let titleAlign = {textAlign: "leftAlign"};
-let skillSide = "left";
+
 
 export class Skills extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isDialogOpen: false,
-            title: "",
-            skillStyle: "",
-            image: ""
-        };
         this.openDialog = this.openDialog.bind(this);
         this.closeDialog = this.closeDialog.bind(this);
         this.checkSide = this.checkSide.bind(this);
-        if ((this.props.currentIndex + 1) % 2) {
-            iconAlign = {marginRight: "0"}
-            titleAlign = {textAlign: "left"}
-            skillSide = "left";
 
+        // Sets state based on current order of Skills
+        if ((this.props.currentIndex + 1 ) % 2) {
+            this.state = {
+                isDialogOpen: false,
+                title: "",
+                skillStyle: "",
+                image: "",
+                iconAlign: {marginRight: "0"},
+                titleAlign: {textAlign: "left"},
+                skillSide: "left"
+            };
         } else {
-            
-            iconAlign = {marginLeft: "0"}
-            titleAlign = {textAlign: "right"}
-            skillSide = "right";
+            this.state = {
+                isDialogOpen: false,
+                title: "",
+                skillStyle: "",
+                image: "",
+                iconAlign: {marginLeft: "0"},
+                titleAlign: {textAlign: "right"},
+                skillSide: "right"
+            };
         }
 
     }
@@ -36,20 +40,18 @@ export class Skills extends React.Component {
         //the icon and header order accordingly
         if (side === "left") {
             return (<div className="skill"style={this.props.skillStyle}>
-                    <div className="skillHeader" style={titleAlign} >{this.props.title}</div>
-                    <img className="skillIcon" width="80px" height="80px" src={require(`./images/${this.props.image}`)} alt={this.props.title}  onClick={this.openDialog} style={iconAlign} />
-                    
+                    <div className="skillHeader" style={this.state.titleAlign} >{this.props.title}</div>
+                    <img className="skillIcon" width="80px" height="80px" src={require(`./images/${this.props.image}`)} alt={this.props.title} onClick={this.openDialog} style={this.state.iconAlign} />
                 </div>)
         } else {
             return (<div className="skill"style={this.props.skillStyle}>
-                    <img className="skillIcon" width="80px" height="80px" src={this.props.image} alt={this.props.title}  onClick={this.openDialog} style={iconAlign} />
-                    <div className="skillHeader" style={titleAlign} >{this.props.title}</div>
+                    <img className="skillIcon" width="80px" height="80px" src={require(`./images/${this.props.image}`)} alt={this.props.title}  onClick={this.openDialog} style={this.state.iconAlign} />
+                    <div className="skillHeader" style={this.state.titleAlign} >{this.props.title}</div>
                 </div>)
         }
     }
     openDialog() {
         this.setState({isDialogOpen: true});
-        console.log('clicked');
     }
 
     closeDialog() {
@@ -59,7 +61,7 @@ export class Skills extends React.Component {
     render() {
 
         return (<div className="skillContainer" style={this.props.skillStyle}>
-                {this.checkSide(skillSide)}
+                {this.checkSide(this.state.skillSide)}
                 
                 <div className='skillDialogContainer'>
                 {
@@ -84,10 +86,5 @@ export class Skills extends React.Component {
                 
                 </div>
             </div>);
-    }
-    componentDidMount() {
-        this.setState({ title: this.props.title,
-                        skillStyle: this.props.skillStyle,
-                        image: this.props.image});
     }
 }

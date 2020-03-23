@@ -128,7 +128,7 @@ class App extends React.Component {
           skillStyle: {backgroundColor: doc.data().color},
           currentIndex: indexCounter});
           indexCounter++;
-          console.log(doc.data().src);
+          console.log(indexCounter);
 
         
             
@@ -237,7 +237,7 @@ class App extends React.Component {
                       image={skill.src}
                       key={skill.name}
                       skillStyle={skill.skillStyle}
-                      currentIndex={skill.currentIndex}
+                      currentIndex={this.state.skillArray.indexOf(skill)}
                       test={console.log(skill.name)}
                     />
                     
