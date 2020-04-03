@@ -13,6 +13,7 @@ import './App.css';
 import {MenuButtons, NameHeader} from './MenuBar.js';
 import {Skills} from './Skills.js';
 import resumeLink from "./Documents/Joseph Lackey Resume 1.0E CW.pdf";
+import Dialog from 'react-dialog';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAxjmidzSR4I48SsbwYTS_Flqn0qnACD58",
@@ -106,7 +107,9 @@ class App extends React.Component {
     this.state = {
       page: "index",
       text: "",
-      skillArray: []
+      skillArray: [],
+      isDialogOpen: false,
+      skillTitle: ""
     };
 
     this.onClick = this.onClick.bind(this);
@@ -114,6 +117,8 @@ class App extends React.Component {
     this.onMouseLeave = this.onMouseLeave.bind(this);
     this.createSkills = this.createSkills.bind(this);
     this.getSkills = this.getSkills.bind(this);
+    this.closeDialog = this.closeDialog.bind(this);
+    this.openDialog = this.openDialog.bind(this);
     this.getSkills();
     //this.headerChange = this.headerChange.bind(this);
   }
@@ -189,6 +194,18 @@ class App extends React.Component {
         style: buttonStyle
     });
   }
+
+  //Dialog Controls
+  openDialog(title) {
+    console.log("open dialog");
+    this.setState({isDialogOpen: true, skillTitle: title});
+    
+  }
+
+  closeDialog() {
+    this.setState({isDialogOpen: false});
+  }
+
   componentDidUpdate() {
     this.createSkills();
     console.log("render");
@@ -196,6 +213,28 @@ class App extends React.Component {
   }
   render() {
     return (<div id="Home">
+              <div className='skillDialogContainer'>
+                {
+                    this.state.isDialogOpen && 
+                    <Dialog width="500px" title="" modal={true} onClose={this.closeDialog}
+                        buttons={
+                        [{
+                            text: "Close",
+                            className: "skillDialogButton",
+                            onClick: () => this.closeDialog()
+                            
+                        }]
+                    }>
+                        <h1 className='skillDialogTitle'>{this.state.skillTitle}</h1>
+                        <p className='skillDescription'>More Content. Anything goes here
+                        this is a lot of content. A matter of fact, this is so much content
+                        that you will love having all the content that I have. You love contentas 
+                        as much as I love giving content, wouldn't you say?</p>
+                    </Dialog>
+                    
+                }
+                
+                </div>
               <div className="menuBar">
                   <MenuButtons onClick={this.onClick} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} />
               </ div>
@@ -239,10 +278,11 @@ class App extends React.Component {
                       skillStyle={skill.skillStyle}
                       currentIndex={this.state.skillArray.indexOf(skill)}
                       test={console.log(skill.name)}
+                      openDialog={this.openDialog}
                     />
                     
                   ))}
-                  
+                           
                   
               </div> 
             </div>)

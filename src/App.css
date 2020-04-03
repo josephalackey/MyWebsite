@@ -178,18 +178,16 @@
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+
 .skillDialogContainer {
-  position: absolute;
-  padding: 0;
-  top: 225vh;
-  left: 25vw;
-  margin: 0;
+  padding-right: 0;
+  position: fixed;
+  margin-top: 50vh;
+  margin-left: 50vw;
   text-align: center;
-  width: 50vw;
   z-index: 1;
   border-radius: 10px;
-  transform: translate(250px, 150px);
-  transition: position 0.1s;
+  /* transition: position 0.1s; */
 }
 .skillDialogTitle {
   font-size: 200%;
@@ -211,6 +209,12 @@
   border-radius: 5px;
   border-color: black;
 }
+
+.ui-dialog {
+  margin: auto;
+  position: absolute;
+}
+
 .skillsSubHeader {
   text-align: center;
   color: white;
@@ -242,9 +246,6 @@
   }
 
   .skillContainer {
-    width: auto;
-    background-color: #E5E5E5;
-    justify-content: justify;
     width: 34vw;
   }
   .skillInfographic {
@@ -263,12 +264,11 @@
     padding: 2vw;
     color: #E5E5E5;
     font-size: 30px;
-    
-    transition: transform 0.1s
+    transition: transform 0.02s
     
   }
   .skill:hover {
-    transform: scale(1.1);
+    transform: scale(1.01);
     
   }
   .skillHeader {
