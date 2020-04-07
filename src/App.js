@@ -109,7 +109,8 @@ class App extends React.Component {
       text: "",
       skillArray: [],
       isDialogOpen: false,
-      skillTitle: ""
+      skillTitle: "",
+      skillDescription: ""
     };
 
     this.onClick = this.onClick.bind(this);
@@ -131,7 +132,8 @@ class App extends React.Component {
           name: doc.data().name,
           src: doc.data().src,
           skillStyle: {backgroundColor: doc.data().color},
-          currentIndex: indexCounter});
+          currentIndex: indexCounter,
+          description: doc.data().description,});
           indexCounter++;
           console.log(indexCounter);
 
@@ -196,9 +198,9 @@ class App extends React.Component {
   }
 
   //Dialog Controls
-  openDialog(title) {
+  openDialog(title, description) {
     console.log("open dialog");
-    this.setState({isDialogOpen: true, skillTitle: title});
+    this.setState({isDialogOpen: true, skillTitle: title, skillDescription: description});
     
   }
 
@@ -212,7 +214,7 @@ class App extends React.Component {
     console.log(this.state.skillArray);
   }
   render() {
-    return (<div id="Home">
+    return (<div id="Home" style={{backgroundColor: "#E5E5E5"}}>
               <div className='skillDialogContainer'>
                 {
                     this.state.isDialogOpen && 
@@ -226,10 +228,7 @@ class App extends React.Component {
                         }]
                     }>
                         <h1 className='skillDialogTitle'>{this.state.skillTitle}</h1>
-                        <p className='skillDescription'>More Content. Anything goes here
-                        this is a lot of content. A matter of fact, this is so much content
-                        that you will love having all the content that I have. You love contentas 
-                        as much as I love giving content, wouldn't you say?</p>
+                        <p className='skillDescription'>{this.state.skillDescription}</p>
                     </Dialog>
                     
                 }
@@ -255,14 +254,7 @@ class App extends React.Component {
                      fun and I am putting a lot of fillwer stuff so that I will be able to keep
                      typing and make this look like a lot of words. These words are the best. In, 
                      fact, I love typing words so much that we will be read. Are you still reading?
-                      Hello, my name is Joseph. I like to do stuff that is fun and fun stuff is really 
-                     fun and I am putting a lot of fillwer stuff so that I will be able to keep
-                     typing and make this look like a lot of words. These words are the best. In, 
-                     fact, I love typing words so much that we will be read. Are you still reading?
-                     Hello, my name is Joseph. I like to do stuff that is fun and fun stuff is really 
-                     fun and I am putting a lot of fillwer stuff so that I will be able to keep
-                     typing and make this look like a lot of words. These words are the best. In, 
-                     fact, I love typing words so much that we will be read. Are you still reading?</p> 
+                      Hello, my name is Joseph. </p> 
                     </div>
                   </div>
               </div>
@@ -276,6 +268,7 @@ class App extends React.Component {
                       image={skill.src}
                       key={skill.name}
                       skillStyle={skill.skillStyle}
+                      description={skill.description || 'Not found.'}
                       currentIndex={this.state.skillArray.indexOf(skill)}
                       test={console.log(skill.name)}
                       openDialog={this.openDialog}
