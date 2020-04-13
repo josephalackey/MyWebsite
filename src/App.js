@@ -36,10 +36,30 @@ firebase.initializeApp({
 });
 
 const db = firebase.firestore();
-
-const keys = {37: 1, 38: 1, 39: 1, 40: 1, 32: 1, 33: 1, 34: 1, 35: 1, 36: 1}
-
 let testSkillList = [];
+
+//Start of variables and functions to prevent scrolling
+const keys = {37: 1, 38: 1, 39: 1, 40: 1, 32: 1, 33: 1, 34: 1, 35: 1, 36: 1};
+let supportsPassive = false;
+try {
+  window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+    get: function () { supportsPassive = true; }
+  }));
+} catch(e) {}
+
+var wheelOpt = supportsPassive ? { passive: false} : false;
+var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+const preventDefault = (e) => {
+  e.preventDefault();
+}
+const preventDefaultForScrollKeys = (e) => {
+  if (keys[e.keyCode]) {
+    preventDefault(e);
+    return false;
+  }
+}
+//End of variables and functions to prevent scrolling
 
 const bodyStyle = {
   backgroundImage: `url(${selfPortrait})`,
@@ -79,6 +99,7 @@ class App extends React.Component {
     this.getSkills = this.getSkills.bind(this);
     this.closeDialog = this.closeDialog.bind(this);
     this.openDialog = this.openDialog.bind(this);
+    // this.preventDefault = this.preventDefault(this);
     this.getSkills();
   }
 
@@ -132,15 +153,29 @@ class App extends React.Component {
   //Dialog Controls
   openDialog(title, description) {
     console.log("open dialog");
+    this.disableScroll();
     this.setState({isDialogOpen: true, skillTitle: title, skillDescription: description});
     
   }
 
   closeDialog() {
+    this.enableScroll();
     this.setState({isDialogOpen: false});
   }
-
   
+  //functions to control preventing scroll
+  disableScroll() {
+    window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+    window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+    window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+    window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+  }
+  enableScroll() {
+    window.removeEventListener('DOMMouseScroll', preventDefault, false);
+    window.removeEventListener(wheelEvent, preventDefault, wheelOpt); 
+    window.removeEventListener('touchmove', preventDefault, wheelOpt);
+    window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+  }
   render() {
     return (<div id="Home" style={{backgroundColor: "#E5E5E5"}}>
               <div className='skillDialogContainer'>
