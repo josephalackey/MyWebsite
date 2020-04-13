@@ -37,49 +37,9 @@ firebase.initializeApp({
 
 const db = firebase.firestore();
 
-
+const keys = {37: 1, 38: 1, 39: 1, 40: 1, 32: 1, 33: 1, 34: 1, 35: 1, 36: 1}
 
 let testSkillList = [];
-const newTestSkillList = [];
-
-const renderSkill = (doc) => {
-  let skill = document.createElement("Skills");
-  skill.title = doc.data().name;
-  skill.src = doc.data().src;
-  
-  const skillsSelector = document.getElementById('Skills');
-  skillsSelector.appendChild(skill);
-}
-
-// const getSkills = async () => {
-// let indexCounter = 0;
-// await db.collection("Skills").get().then( (querySnapshot) => {
-//   querySnapshot.docs.forEach((doc) => {
-//     testSkillList.push({
-//       name: doc.data().name,
-//       src: doc.data().src,
-//       key: doc.data().name,
-//       skillStyle: doc.data().color,
-//       currentIndex: indexCounter});
-//       console.log(testSkillList);
-    
-//     newTestSkillList.push(<Skills 
-//       title={doc.data().name}
-//       image={doc.data().src}
-//       key={doc.data().name}
-//       skillStyle={doc.data().skillStyle}
-//       currentIndex={1}
-//     />)
-//     console.log(doc.data().name)
-        
-//   });
-// });
-
-// newTestSkillList = await testSkillList.json();
-
-
-
-
 
 const bodyStyle = {
   backgroundImage: `url(${selfPortrait})`,
@@ -116,13 +76,13 @@ class App extends React.Component {
     this.onClick = this.onClick.bind(this);
     this.onMouseEnter = this.onMouseEnter.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
-    this.createSkills = this.createSkills.bind(this);
     this.getSkills = this.getSkills.bind(this);
     this.closeDialog = this.closeDialog.bind(this);
     this.openDialog = this.openDialog.bind(this);
     this.getSkills();
-    //this.headerChange = this.headerChange.bind(this);
   }
+
+  //Pull skills from database
   getSkills() {
     let indexCounter = 0;
     db.collection("Skills").get().then( (querySnapshot) => {
@@ -136,37 +96,9 @@ class App extends React.Component {
           description: doc.data().description,});
           indexCounter++;
           console.log(indexCounter);
-
-        
-            
       });
       this.setState({skillArray: testSkillList})
     })}
-    createSkills() {
-      let tempList = [];
-      console.log(skillList);
-      console.log(testSkillList)
-      testSkillList.map(skill => {
-        console.log(skill.name);
-    })
-      
-      console.log("state set")
-      // for (let i = 0; i < testSkillList.length; i++) {
-      // tempList.push((<Skills 
-      //   title={tempList[i].name}
-      //   image={tempList[i].src}
-      //   key={tempList[i].name}
-      //   skillStyle={tempList[i].skillStyle}
-      //   currentIndex={i}
-        
-      // />));
-      // console.log(tempList[i])
-      // };
-      console.log(testSkillList)
-      console.log(tempList)
-      console.log(newTestSkillList)
-      
-    }
   
   //Meant to set state for page to show
   onClick(button) {
@@ -208,11 +140,7 @@ class App extends React.Component {
     this.setState({isDialogOpen: false});
   }
 
-  componentDidUpdate() {
-    this.createSkills();
-    console.log("render");
-    console.log(this.state.skillArray);
-  }
+  
   render() {
     return (<div id="Home" style={{backgroundColor: "#E5E5E5"}}>
               <div className='skillDialogContainer'>
@@ -247,19 +175,17 @@ class App extends React.Component {
               </div>
               <div className="aboutMe" id="aboutMe">
                 <div className="aboutMeContainer">
-                  <img className="aboutMeImage" src={nappers} />
+                  <img className="aboutMeImage" src={nappers} width="345" height="460"/>
                   <div className="aboutMeText">
-                    <h1 className="aboutMeHeader" >About me</h1>
-                    <p className="aboutMeBody">Hello, my name is Joseph. I like to do stuff that is fun and fun stuff is really 
-                     fun and I am putting a lot of fillwer stuff so that I will be able to keep
-                     typing and make this look like a lot of words. These words are the best. In, 
-                     fact, I love typing words so much that we will be read. Are you still reading?
-                      Hello, my name is Joseph. </p> 
-                    </div>
+                    <h1 className="aboutMeHeader" >My passions is creating things that are relevant to others.</h1>
+                    <p className="aboutMeBody">Whether it is designing a tool or organizing an event, 
+                    I find the process of creation extremely enjoyable and take great pride in the final result. 
+                    This feeling is amplified when it directly affects of benefits people.</p> 
                   </div>
+                </div>
               </div>
-              <h1 style={{textAlign: "center", backgroundColor: "#E5E5E5", fontFamily: "B612", margin: "0", paddingTop: "50px", fontSize: "50px", color: "#242F40"}}>PROFESSIONAL SKILLS</h1>
-              
+              <h1 style={{textAlign: "center", backgroundColor: "#E5E5E5", fontFamily: "B612", margin: "0", paddingTop: "25px", fontSize: "50px", color: "#242F40"}}>PROFESSIONAL SKILLS</h1>
+              <h2 style={{textAlign: "center", backgroundColor: "#E5E5E5", fontFamily: "B612", margin: "0", paddingTop: "25px", fontSize: "15px", color: "#242F40"}}>Click a skill to learn more.</h2>
               <div id="Skills" className="skillInfographic">
               
               {this.state.skillArray.map(skill => (
@@ -270,13 +196,18 @@ class App extends React.Component {
                       skillStyle={skill.skillStyle}
                       description={skill.description || 'Not found.'}
                       currentIndex={this.state.skillArray.indexOf(skill)}
-                      test={console.log(skill.name)}
                       openDialog={this.openDialog}
                     />
-                    
                   ))}
-                           
-                  
+              </div> 
+              <div className="footerContainer">
+                <div className="footerEmail" >Contact me for more information.</div> 
+                <a href="mailto:josephalackey@gmail.com" className="footerLink" width="37.22px" height="31px">
+                  <img src={require("./images/gmailicon.png")} alt="josephalackey@gmail.com" className="footerGmailImage" />
+                </a>
+                <a href="https://www.linkedin.com/in/josephalackey" className="footerLink" width="34px" height="29.1px">
+                  <img src={require("./images/linkedin.png")} alt="linkedin" className="footerLinkedInImage" />
+                </a>
               </div> 
             </div>)
   }

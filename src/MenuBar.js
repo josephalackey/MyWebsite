@@ -28,8 +28,6 @@ const headerStyle = {
 
 const nameText = ['J','o','s','e','p','h',' ','L','a','c','k','e','y',<br key="carriage0"/>,'P','r','o','j','e','c','t',' ','M','a','n','a','g','e','r'];
 let newText = [];
-let testHeader = '';
-let testNumber = 3000;
 
 export class NameHeader extends React.Component {
     constructor(props) {

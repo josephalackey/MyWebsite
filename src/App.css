@@ -18,7 +18,6 @@
 }
 
 .aboutMe {
-  min-height: 100vh;
   padding: 0;
   margin: 0;
   background-color: #E5E5E5;
@@ -27,26 +26,26 @@
 
 }
 .aboutMeContainer {
-  padding-top: 25vh;
-  padding-bottom: 12vh;
+  padding-top: 150px;
+  padding-bottom: 150px;
   padding-left: 20vw;
   padding-right: 20vw;
   display: flex;
+  flex-wrap: wrap;
   
 }
 
 .aboutMeImage {
  padding: 0;
  margin: 0;
- width: 400px;
- height: 533px;
+ /* width: 400px;
+ height: 533px; */
 }
 
 .aboutMeHeader {
   padding: 0;
   margin: 0;
-  text-align: center;
-  font-size: 30px;
+  font-size: 37px;
   font-family: B612;
   font-weight: bold;
   color: #242F40
@@ -58,7 +57,8 @@
   padding: 0;
   margin: 0;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 17px;
+  line-height: 30px;
   padding-top: 20px;
   min-width: 450px;
   color: #242F40
@@ -67,10 +67,9 @@
 }
 .aboutMeText {
   padding: 0;
-  
-  margin-left: 5vw;
-  margin-right: 5vw;
-  float: right;
+  width: 500px;
+  margin: auto
+  /* float: right; */
   
 }
 
@@ -89,6 +88,31 @@
   margin: 0;
 }
 
+.footerContainer {
+  background-color: #242F40;
+  height: 100px;
+  text-align: center;
+}
+
+.footerEmail {
+  color: #E5E5E5;
+  text-align: center;
+  padding-top: 15px;
+  font-weight: 700;
+}
+
+.footerGmailImage {
+  width: 37.22px;
+  height: 30.1px;
+  margin: 10px;
+  margin-bottom: 0px;
+}
+.footerLinkedInImage {
+  width: 34px;
+  height: 29.1px;
+  margin: 10px;
+  margin-bottom: 0px;
+}
 .portraitHeader {
   text-align: left;
   color: white;
@@ -117,7 +141,7 @@
 }
 
 .skillsHeader {
-  padding-top: 12vh;
+  padding-top: 150px;
   margin:0;
   margin-bottom: 10px;
   text-align: center;
