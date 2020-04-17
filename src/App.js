@@ -12,7 +12,7 @@ import nappers from './images/nappers.jpg';
 import './App.css';
 import {MenuButtons, NameHeader} from './MenuBar.js';
 import {Skills} from './Skills.js';
-import resumeLink from "./Documents/Joseph Lackey Resume 1.0E CW.pdf";
+import resumeLink from "./Documents/Joseph Lackey Resume 1.6E.pdf";
 import Dialog from 'react-dialog';
 
 const firebaseConfig = {

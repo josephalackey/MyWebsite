@@ -267,7 +267,7 @@
   }
 
   .skillContainer {
-    width: 440px;
+    width: 390px;
 
   }
   .skillInfographic {
@@ -275,7 +275,7 @@
     flex-wrap: wrap;
     background-color: #E5E5E5;
     margin: auto;
-    width: 900px;
+    width: 800px;
     justify-content: center;
     padding-top: 50px;
     padding-bottom: 150px;
@@ -285,10 +285,10 @@
   .skill {
     display: table;
     font-weight: 700;
-    width: 400px;
+    width: 350px;
     padding: 20px;
     color: #E5E5E5;
-    font-size: 30px;
+    font-size: 25px;
     transition: transform 0.02s
     
   }
@@ -317,21 +317,32 @@
   [class="aboutMeContainer"] {
     flex-direction: column;
     justify-content: center;
-    margin: none
+    margin: none;
+    padding-left: 10px;
+    padding-right: 10px
   }
   [class="aboutMeBody"] {
     align-items: center;
     min-width: 200px;
-    max-width: 450px
+    max-width: 400px;
+    
   }
   [class="aboutMeText"] {
     padding-top: 40px;
     margin-left: none;
     margin-right: none;
+    width: 400px;
+    transform: scale(0.9);
   }
   [class="skillInfographic"] {
     flex-direction: column;
     align-content: center;
-    width: 450px;
+    width: 310px;
+  }
+  [class="skillContainer"] {
+    width: 300px;
+  }
+  [class="skill"] {
+    width: 260px;
   }
 }

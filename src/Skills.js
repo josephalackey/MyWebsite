@@ -39,11 +39,11 @@ export class Skills extends React.Component {
         if (side === "left") {
             return (<div className="skill" style={this.props.skillStyle}  onClick={e => {this.props.openDialog(this.props.title, this.props.description)}}>
                     <div className="skillHeader" style={this.state.titleAlign} >{this.props.title}</div>
-                    <img className="skillIcon" width="80px" height="80px" src={require(`./images/${this.props.image}`)} alt={this.props.title} style={this.state.iconAlign} />
+                    <img className="skillIcon" width="60px" height="60px" src={require(`./images/${this.props.image}`)} alt={this.props.title} style={this.state.iconAlign} />
                 </div>)
         } else {
             return (<div className="skill" style={this.props.skillStyle}  onClick={e => this.props.openDialog(this.props.title, this.props.description)}>
-                    <img className="skillIcon" width="80px" height="80px" src={require(`./images/${this.props.image}`)} alt={this.props.title} style={this.state.iconAlign} />
+                    <img className="skillIcon" width="60px" height="60px" src={require(`./images/${this.props.image}`)} alt={this.props.title} style={this.state.iconAlign} />
                     <div className="skillHeader" style={this.state.titleAlign} >{this.props.title}</div>
                 </div>)
         }
