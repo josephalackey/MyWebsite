@@ -15,16 +15,6 @@ import {Skills} from './Skills.js';
 import resumeLink from "./Documents/Joseph Lackey Resume 1.6E.pdf";
 import Dialog from 'react-dialog';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAxjmidzSR4I48SsbwYTS_Flqn0qnACD58",
-  authDomain: "personal-website-450d2.firebaseapp.com",
-  databaseURL: "https://personal-website-450d2.firebaseio.com",
-  projectId: "personal-website-450d2",
-  storageBucket: "personal-website-450d2.appspot.com",
-  messagingSenderId: "639341114300",
-  appId: "1:639341114300:web:5ecf700ce40e8cfa5971b9",
-  measurementId: "G-GFWEW07PPQ"
-};
 // Initialize Cloud Firestore through Firebase
 const firebase = require("firebase");
 // Required for side-effects
@@ -60,7 +50,9 @@ const preventDefaultForScrollKeys = (e) => {
   }
 }
 //End of variables and functions to prevent scrolling
+  
 
+//Portrait Style
 const bodyStyle = {
   backgroundImage: `url(${selfPortrait})`,
   backgroundSize: 'cover',
@@ -69,17 +61,6 @@ const bodyStyle = {
   padding: "0",
   margin: "0"
 }
-const skillList = [
-  {name: 'Project Management', src: projectmanagement, skillStyle:{backgroundColor: "#8D99AE"}}, 
-  {name: 'Programming', src: programming, skillStyle:{backgroundColor: "#242F40"}},
-  {name: 'Customer Service', src: customerservice, skillStyle:{backgroundColor: "#242F40"}},
-  {name: 'Communication', src: communication, skillStyle:{backgroundColor: "#CCA43B"}}, 
-  {name: 'Building Solutions', src: sales, skillStyle:{backgroundColor: "#CCA43B"}}, 
-  {name: 'User Experience', src: UX, skillStyle:{backgroundColor: "#8D99AE"}}, 
-  {name: 'Networking', src: networking, skillStyle:{backgroundColor: "#8D99AE", }},
-  {name: 'Problem Solving', src: problemsolving, skillStyle:{backgroundColor: "#242F40"}}
-];
-
 
 class App extends React.Component {
   constructor(props) {
@@ -154,12 +135,14 @@ class App extends React.Component {
   openDialog(title, description) {
     console.log("open dialog");
     this.disableScroll();
+    this.dim(true);
     this.setState({isDialogOpen: true, skillTitle: title, skillDescription: description});
     
   }
 
   closeDialog() {
     this.enableScroll();
+    this.dim(false);
     this.setState({isDialogOpen: false});
   }
   
@@ -176,6 +159,12 @@ class App extends React.Component {
     window.removeEventListener('touchmove', preventDefault, wheelOpt);
     window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
   }
+
+  dim = (bool) => {
+    if (typeof bool=='undefined') bool=true; // so you can shorten dim(true) to dim()
+    document.getElementById('dimmer').style.display=(bool?'block':'none');
+  }  
+
   render() {
     return (<div id="Home" style={{backgroundColor: "#E5E5E5"}}>
               <div className='skillDialogContainer'>
@@ -197,6 +186,7 @@ class App extends React.Component {
                 }
                 
                 </div>
+                <div id="dimmer"></div>
               <div className="menuBar">
                   <MenuButtons onClick={this.onClick} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} />
               </ div>
@@ -243,7 +233,8 @@ class App extends React.Component {
                 <a href="https://www.linkedin.com/in/josephalackey" className="footerLink" width="34px" height="29.1px">
                   <img src={require("./images/linkedin.png")} alt="linkedin" className="footerLinkedInImage" />
                 </a>
-              </div> 
+              </div>
+              
             </div>)
   }
 }
