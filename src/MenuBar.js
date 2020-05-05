@@ -77,9 +77,9 @@ export class MenuButtons extends React.Component {
         return (
             <div style={menuStyle}>
                 <button className="menuButtons" style={buttonStyle} name="Home" onClick={e => this.props.onClick(e.target.name)} onMouseEnter={e => {this.props.onMouseEnter(e.target.style)}} onMouseLeave={e => {this.props.onMouseLeave(e.target.style)}} >HOME</button>
-                <button className="menuButtons" style={buttonStyle} name="Skills" onClick={e => this.props.onClick(e.target.name)} onMouseEnter={e => {this.props.onMouseEnter(e.target.style)}} onMouseLeave={e => {this.props.onMouseLeave(e.target.style)}}>SKILLS</button>
-                <button className="menuButtons" style={buttonStyle} name="Blog" onClick={e => this.props.onClick(e.target.name)} onMouseEnter={e => {this.props.onMouseEnter(e.target.style)}} onMouseLeave={e => {this.props.onMouseLeave(e.target.style)}}>BLOG</button>
+                {/* <button className="menuButtons" style={buttonStyle} name="Blog" onClick={e => this.props.onClick(e.target.name)} onMouseEnter={e => {this.props.onMouseEnter(e.target.style)}} onMouseLeave={e => {this.props.onMouseLeave(e.target.style)}}>BLOG</button> */}
                 <button className="menuButtons" style={buttonStyle} name="aboutMe" onClick={e => this.props.onClick(e.target.name)} onMouseEnter={e => {this.props.onMouseEnter(e.target.style)}} onMouseLeave={e => {this.props.onMouseLeave(e.target.style)}}>ABOUT</button>
+                <button className="menuButtons" style={buttonStyle} name="Skills" onClick={e => this.props.onClick(e.target.name)} onMouseEnter={e => {this.props.onMouseEnter(e.target.style)}} onMouseLeave={e => {this.props.onMouseLeave(e.target.style)}}>SKILLS</button>
             </div>
         )
     }

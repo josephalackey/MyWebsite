@@ -1,5 +1,5 @@
 import React from 'react';
-import selfPortrait from "./images/portrait.jpg";
+import selfPortrait from "./images/portrait4.jpg";
 import communication from './images/chat.png';
 import projectmanagement from './images/pie-chart.png';
 import programming from './images/macbook.png';
@@ -57,6 +57,7 @@ const bodyStyle = {
   backgroundImage: `url(${selfPortrait})`,
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center',
   minHeight: "100vh",
   padding: "0",
   margin: "0"
