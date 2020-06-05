@@ -1,14 +1,6 @@
 import React from 'react';
 import selfPortrait from "./images/portrait4.jpg";
-import communication from './images/chat.png';
-import projectmanagement from './images/pie-chart.png';
-import programming from './images/macbook.png';
-import customerservice from './images/girl.png';
-import sales from './images/tag.png'
-import UX from './images/user.png'
-import networking from './images/server.png';
-import problemsolving from './images/mind.png';
-import nappers from './images/nappers.jpg';
+import AboutMePhoto from './images/AboutMe.jpg';
 import './App.css';
 import {MenuButtons, NameHeader} from './MenuBar.js';
 import {Skills} from './Skills.js';
@@ -201,9 +193,9 @@ class App extends React.Component {
               </div>
               <div className="aboutMe" id="aboutMe">
                 <div className="aboutMeContainer">
-                  <img className="aboutMeImage" src={nappers} width="345" height="460"/>
+                  <img className="aboutMeImage" src={AboutMePhoto} width="345" height="460"/>
                   <div className="aboutMeText">
-                    <h1 className="aboutMeHeader" >My passions is creating things that are relevant to others.</h1>
+                    <h1 className="aboutMeHeader" >My passion is creating things that are a benefit to others.</h1>
                     <p className="aboutMeBody">Whether it is designing a tool or organizing an event, 
                     I find the process of creation extremely enjoyable and take great pride in the final result. 
                     This feeling is amplified when it directly affects of benefits people.</p> 
@@ -228,10 +220,10 @@ class App extends React.Component {
               </div> 
               <div className="footerContainer">
                 <div className="footerEmail" >Contact me for more information.</div> 
-                <a href="mailto:josephalackey@gmail.com" className="footerLink" width="37.22px" height="31px">
-                  <img src={require("./images/gmailicon.png")} alt="josephalackey@gmail.com" className="footerGmailImage" />
+                <a href="mailto:josephalackey@gmail.com" className="footerLink" width="40px" height="40px">
+                  <img src={require("./images/mailicon2.png")} alt="josephalackey@gmail.com" className="footerGmailImage" />
                 </a>
-                <a href="https://www.linkedin.com/in/josephalackey" className="footerLink" width="34px" height="29.1px">
+                <a href="https://www.linkedin.com/in/josephalackey" className="footerLink" width="40px" height="40px">
                   <img src={require("./images/linkedin.png")} alt="linkedin" className="footerLinkedInImage" />
                 </a>
               </div>
