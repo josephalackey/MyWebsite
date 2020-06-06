@@ -4,7 +4,7 @@ import AboutMePhoto from './images/AboutMe.jpg';
 import './App.css';
 import {MenuButtons, NameHeader} from './MenuBar.js';
 import {Skills} from './Skills.js';
-import resumeLink from "./Documents/Joseph Lackey Resume 1.6E.pdf";
+import resumeLink from "./Documents/Joseph Lackey Resume.pdf";
 import Dialog from 'react-dialog';
 
 // Initialize Cloud Firestore through Firebase
