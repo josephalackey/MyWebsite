@@ -358,4 +358,8 @@
   [class="skill"] {
     width: 260px;
   }
+  [class="ui-dialog-content"] {
+    width: 300px;
+    transform: translateX(100px); 
+  }
 }
